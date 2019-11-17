@@ -43,14 +43,24 @@ Vulnerability #2: XSS
 2. Fill out form with name and email
 3. Insert html/script tag with an event listener which triggers an alert
 
-As a staff member on green page wants to read through feedback, he/she is vulnerable to XSS attacks. The text area does not handle cross site scripts, which means that any scripts provided in the feedback can be run on the staff side of the website.
+As a staff member on green page that wants to read through feedback is vulnerable to XSS attacks. The text area does not handle cross site scripts, which means that any scripts provided in the feedback can be run on the staff side of the website.
 
 <img src="gifs/xss.gif" alt="xss" />
 
 
 ## Red
 
-Vulnerability #1: __________________
+Vulnerability #1: Insecure Direct Object Reference (IDOR)
+- Where: /public/territories.php
+- Reveal: Authenticated information
+1. Go to Find a Salesperson
+2. Click on the first salesperson on the site.
+3. Look at the id of that specific person
+4. Try different id's to see what information/persons you are getting.
+
+Both green and blue page redirects any unauthenticated user back to /territories.php if an ID provided is not public. On the red page however, the information stored for this specific id is shown to anyone that provide the id in the url.
+
+<img src="gifs/idor.gif" alt="idor" />
 
 Vulnerability #2: __________________
 
