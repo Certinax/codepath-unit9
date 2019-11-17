@@ -80,7 +80,7 @@ Vulnerability #2: Cross-Site Request Forgery
 3. Hacker provides a link or any other triggers that makes sure a logged in user executes the hacker's form
 4. Logged in user executes the form provided as a link/xss or something similar.
 
-For the red page I found out that the CSRF token is not needed in order to update a user, salesperson or countries/states. This makes it vulnerable for CSRF attacks. I created a [html page]("asd"), hosted on heroku which has a hidden form that sends information to the desired endpoint upon page load. In order for this to succeed, a logged in user has to enter this site. To achieve this part I (as the hacker) provided feedback in the feedback page with a link to my page. The link is also *camouflaged* with bitly to make it less suspicious. Upon click from a logged in user, the information for Ken is updated to what the hacker wants.
+For the red page I found out that the CSRF token is not needed in order to update a user, salesperson or countries/states. This makes it vulnerable for CSRF attacks. I created a [html page]("https://github.com/Certinax/codepath-unit9/blob/master/external/showcase.html"), hosted on heroku which has a hidden form that sends information to the desired endpoint upon page load. In order for this to succeed, a logged in user has to enter this site. To achieve this part I (as the hacker) provided feedback in the feedback page with a link to my page. The link is also *camouflaged* with bitly to make it less suspicious. Upon click from a logged in user, the information for Ken is updated to what the hacker wants.
 
 <img src="gifs/csrf.gif" alt="csrf" />
 
