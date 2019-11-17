@@ -12,10 +12,6 @@ The six possible exploits are:
 * Cross-Site Request Forgery (CSRF)
 * Session Hijacking/Fixation
 
-
-######## PASSSSSSSWORD :UZMnB63$q9!b
-
-
 Each version of the site has been given two of the six vulnerabilities. (In other words, all six of the exploits should be assignable to one of the sites.)
 
 ## Blue
@@ -40,7 +36,16 @@ On green page, we will see that the error message is displayed in bold text when
 
 <img src="/gifs/user-enumeration.gif" alt="user-enumeration" />
 
-Vulnerability #2: __________________
+Vulnerability #2: XSS
+- Where: /public/contact.php
+#### How:
+1. Go to contact/feedback page
+2. Fill out form with name and email
+3. Insert html/script tag with an event listener which triggers an alert
+
+As a staff member on green page wants to read through feedback, he/she is vulnerable to XSS attacks. The text area does not handle cross site scripts, which means that any scripts provided in the feedback can be run on the staff side of the website.
+
+<img src="gifs/xss.gif" alt="xss" />
 
 
 ## Red
