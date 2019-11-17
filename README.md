@@ -1,8 +1,6 @@
 # Project 9 - Pentesting Live Targets
 
-[LINK](www.vg.no)
-
-Time spent: **X** hours spent in total
+Time spent: **7** hours spent in total
 
 > Objective: Identify vulnerabilities in three different versions of the Globitek website: blue, green, and red.
 
@@ -19,7 +17,7 @@ Each version of the site has been given two of the six vulnerabilities. (In othe
 ## Blue
 
 Vulnerability #1: Session Hijacking
-- Where /staff/login.php
+- Where: /staff/login.php
 #### How:
 1. Login with valid username and password
 2. Access the session id
@@ -31,8 +29,20 @@ For the blue page the user agent string does not trigger a new session id, thus 
 <img src="gifs/session-hijacking.gif" alt="Session hijacking" />
 
 
-Vulnerability #2: __________________
+Vulnerability #2: SQL Injection
+- Where: /salesperson.php?id=
 
+#### How:
+1. Go to the salesperson page and select a Salesperson
+2. URL reveals that a salesperson is associated with an id
+3. This id might be a direct parameter for a sql statement and thus make it vulnerable for SQL Injection
+
+At the salesperson section on the blue site we have an url which uses a get request to access salesperson sites. This reveals the id of a salesperson through the url parameter (key/value pair) id={number}. For 'poorly' designed websites, this can be the direct sql statement to retrieve data from the database. In order to find out if a random user can access the database directly, is to add a ' at the and of the url, *id=1'*. This was tested on red, green and blue site. On red and green site there were no error and no change of what was presented on the website. In other words, this is sanitized/handled by the developer(s). When this was tested on the blue site, a database error occurred and got presented to the user interface (frontend). With this information on hand, we know that we have access to send sql-statements to the sites database.
+
+With a lot of testing and failure I eventually got something to work. A helpful resource I used to succeed was the [Blind SQL Injection article](https://www.owasp.org/index.php/Blind_SQL_Injection) by OWASP.
+I ended up with following statement: ```id=' OR SLEEP(5)=0--'```
+
+<img src="gifs/sqli.gif" alt="Sqli" />
 
 ## Green
 
@@ -83,6 +93,8 @@ Vulnerability #2: Cross-Site Request Forgery
 4. Logged in user executes the form provided as a link/xss or something similar.
 
 For the red page I found out that the CSRF token is not needed in order to update a user, salesperson or countries/states. This makes it vulnerable for CSRF attacks. I created a html [page]("https://github.com/Certinax/codepath-unit9/blob/master/external/showcase.html"), hosted on heroku which has a hidden form that sends information to the desired endpoint upon page load. In order for this to succeed, a logged in user has to enter this site. To achieve this part I (as the hacker) provided feedback in the feedback page with a link to my page. The link is also *camouflaged* with bitly to make it less suspicious. Upon click from a logged in user, the information for Ken is updated to what the hacker wants.
+
+Link used for CSRF: https://codepath-challenges.herokuapp.com/codepath-challenge/showcase.html
 
 <img src="gifs/csrf.gif" alt="csrf" />
 
