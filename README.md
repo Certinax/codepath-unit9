@@ -1,5 +1,7 @@
 # Project 9 - Pentesting Live Targets
 
+[LINK](www.vg.no)
+
 Time spent: **X** hours spent in total
 
 > Objective: Identify vulnerabilities in three different versions of the Globitek website: blue, green, and red.
