@@ -73,7 +73,16 @@ Both green and blue page redirects any unauthenticated user back to /territories
 
 <img src="gifs/idor.gif" alt="idor" />
 
-Vulnerability #2: __________________
+Vulnerability #2: Cross-Site Request Forgery
+#### How:
+1. Hacker creates a form with updated/malicious information
+2. This form has to be a request to an internal endpoint
+3. Hacker provides a link or any other triggers that makes sure a logged in user executes the hacker's form
+4. Logged in user executes the form provided as a link/xss or something similar.
+
+For the red page I found out that the CSRF token is not needed in order to update a user, salesperson or countries/states. This makes it vulnerable for CSRF attacks. I created a html page, hosted on heroku which has a hidden form that sends information to the desired endpoint upon page load. In order for this to succeed, a logged in user has to enter this site. To achieve this part I (as the hacker) provided feedback in the feedback page with a link to my page. The link is also *camouflaged* with bitly to make it less suspicious. Upon click from a logged in user, the information for Ken is updated to what the hacker wants.
+
+<img src="gifs/csrf.gif" alt="csrf" />
 
 
 ## Notes
