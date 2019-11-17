@@ -16,7 +16,18 @@ Each version of the site has been given two of the six vulnerabilities. (In othe
 
 ## Blue
 
-Vulnerability #1: __________________
+Vulnerability #1: Session Hijacking
+- Where /staff/login.php
+#### How:
+1. Login with valid username and password
+2. Access the session id
+3. Update session id in another browser with the logged in session id
+4. Try to login
+
+For the blue page the user agent string does not trigger a new session id, thus makes it possible to login with a valid logged in session id from another browser/user which is updated through the session updating tool.
+
+<img src="gifs/session-hijacking.gif" alt="Session hijacking" />
+
 
 Vulnerability #2: __________________
 
