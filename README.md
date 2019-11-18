@@ -102,3 +102,5 @@ Link used for CSRF: https://codepath-challenges.herokuapp.com/codepath-challenge
 ## Notes
 
 Describe any challenges encountered while doing the work
+
+The SQLi part was quite challenging. First to find a place where the vulnerability were and how to execute SQL statements that would not return an error. This took definitely the most time to achieve for this assignment. I wish there could have been provided some examples earlier during the course that would elaborate on how SQL in URL's work.
